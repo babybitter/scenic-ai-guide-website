@@ -9,15 +9,19 @@ import {
   Database,
   ExternalLink,
   Github,
+  Globe2,
+  Laptop,
   Layers3,
   MapPinned,
   MessageCircleMore,
   Route,
   Sparkles,
+  TerminalSquare,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { ProductShowcase } from '../components/ProductShowcase'
 import { SectionHeading } from '../components/SectionHeading'
+import { useLanguage } from '../context/LanguageContext'
 import { domains, innovationItems, roadmapStages } from '../data/content'
 import { downloadTargets, futureTargets } from '../data/downloads'
 
@@ -29,8 +33,11 @@ const valueSteps = [
 ]
 
 const innovationIcons = [Layers3, AudioLines, MapPinned, BookOpenCheck]
+const accessIcons = [Globe2, Laptop, TerminalSquare, Compass]
 
 export function HomePage() {
+  const { locale, t } = useLanguage()
+  const isEnglish = locale === 'en'
   const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
   return (
@@ -40,27 +47,27 @@ export function HomePage() {
         <div className="hero-orbit orbit-two" />
         <div className="container hero-grid">
           <div className="hero-copy">
-            <span className="competition-pill"><Sparkles size={15} /> 第十五届中国软件杯 · A5 赛题作品</span>
-            <h1>让每一步游览，<br /><em>都有智能相伴</em></h1>
-            <p>数智游踪面向景区游客与运营方，把 AI 数字人、可信知识问答、地图导览、个性化路线与服务洞察连成一条可落地的智慧文旅服务链。</p>
-            <div className="hero-actions">
+            <span className="competition-pill hero-reveal reveal-1"><Sparkles size={15} /> {t('competition')}</span>
+            <h1 className="hero-reveal reveal-2">{t('heroLineOne')}<br /><em>{t('heroLineTwo')}</em></h1>
+            <p className="hero-reveal reveal-3">{t('heroBody')}</p>
+            <div className="hero-actions hero-reveal reveal-4">
               <a className="button primary" href="https://www.shuzhiyouzong.cn" target="_blank" rel="noreferrer">
-                在线体验 <ArrowRight size={18} />
+                {t('tryOnline')} <ArrowRight size={18} />
               </a>
               <Link className="button secondary" to="/download">
-                获取客户端
+                {t('getClient')}
               </Link>
               <a className="button secondary github-button" href="https://github.com/babybitter/scenic-ai-guide" target="_blank" rel="noreferrer">
                 <Github size={19} /> GitHub
               </a>
             </div>
-            <div className="hero-proof">
-              <span><CheckCircle2 size={16} /> 讯飞 × Live2D 双引擎</span>
-              <span><CheckCircle2 size={16} /> 腾讯地图 × Leaflet 双底图</span>
-              <span><CheckCircle2 size={16} /> 本地 RAG 知识库</span>
+            <div className="hero-proof hero-reveal reveal-5">
+              <span><CheckCircle2 size={16} /> {t('proofAvatar')}</span>
+              <span><CheckCircle2 size={16} /> {t('proofMap')}</span>
+              <span><CheckCircle2 size={16} /> {t('proofRag')}</span>
             </div>
           </div>
-          <div className="hero-visual" aria-label="数智游踪品牌图形与能力概览">
+          <div className="hero-visual hero-reveal reveal-visual" aria-label="数智游踪品牌图形与能力概览">
             <div className="hero-logo-card">
               <img src={asset('brand/brand-mark.png')} alt="数智游踪品牌图形" />
               <div>
@@ -104,7 +111,7 @@ export function HomePage() {
           <SectionHeading
             eyebrow="PRODUCT IN ACTION"
             title="从一次提问，看见完整景区服务"
-            body="七个页面覆盖游客导览、路线规划、景区内容运营与服务质量复盘。含真实截图与可替换占位图，后续仅需更新图片文件。"
+            body="七个真实页面覆盖游客导览、路线规划、景区内容运营与服务质量复盘，自动轮播与手动标签切换均按统一画幅平滑过渡。"
           />
           <ProductShowcase />
         </div>
@@ -143,36 +150,35 @@ export function HomePage() {
       <section className="section-pad access-section">
         <div className="container">
           <SectionHeading
-            eyebrow="ACCESS EVERYWHERE"
-            title="选择适合你的使用方式"
-            body="网页端立即体验，桌面端面向稳定演示与景区终端交付；安装包统一由自有 Linux 下载服务器分发，不依赖 GitHub Release。"
+            eyebrow={t('accessEyebrow')}
+            title={t('accessTitle')}
+            body={t('accessBody')}
           />
-          <div className="access-layout">
-            <article className="web-access-card">
-              <div className="browser-preview">
-                <div><i /><i /><i /><span>app.shuzhiyouzong.cn</span></div>
-                <img src={asset('screenshots/visitor-guide.webp')} alt="电脑网页端预览" />
-              </div>
-              <div className="access-copy">
-                <span className="status-ready">现在可用</span>
-                <h3>电脑网页端</h3>
-                <p>无需安装，打开浏览器即可走通游客问答、数字人讲解、地图导览与运营管理闭环。</p>
-                <a className="button primary" href="https://www.shuzhiyouzong.cn" target="_blank" rel="noreferrer">
-                  打开网页版 <ExternalLink size={17} />
-                </a>
-              </div>
-            </article>
-            <div className="desktop-access-grid">
-              {downloadTargets.slice(1).map((target) => (
-                <article key={target.id}>
-                  <span className="format-badge">{target.format}</span>
-                  <h3>{target.title}</h3>
+          <div className="access-grid">
+            {downloadTargets.map((target, index) => {
+              const Icon = accessIcons[index]
+              const isWeb = target.id === 'web'
+              return (
+                <article className={`access-card ${isWeb ? 'is-featured' : ''}`} key={target.id}>
+                  <div className="access-card-top">
+                    <span className="access-icon"><Icon size={22} /></span>
+                    <span className="format-badge">{target.format}</span>
+                  </div>
+                  <span className="status-ready">{t('availableNow')}</span>
+                  <h3>{isEnglish ? ['Web app', 'Windows client', 'Linux client', 'macOS client'][index] : target.title}</h3>
                   <b>{target.platform}</b>
                   <p>{target.description}</p>
-                  <Link to="/download">查看下载状态 <ArrowRight size={15} /></Link>
+                  <div className="access-card-meta">
+                    <span>{isWeb ? t('noInstall') : t('directDownload')}</span>
+                    {isWeb ? (
+                      <a href="https://www.shuzhiyouzong.cn" target="_blank" rel="noreferrer">{t('openWeb')} <ExternalLink size={15} /></a>
+                    ) : (
+                      <Link to="/download">{t('downloadStatus')} <ArrowRight size={15} /></Link>
+                    )}
+                  </div>
                 </article>
-              ))}
-            </div>
+              )
+            })}
           </div>
           <div className="future-platforms">
             <div>
