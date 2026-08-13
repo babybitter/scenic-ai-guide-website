@@ -8,6 +8,7 @@ import {
   Compass,
   Database,
   ExternalLink,
+  Github,
   Layers3,
   MapPinned,
   MessageCircleMore,
@@ -49,6 +50,9 @@ export function HomePage() {
               <Link className="button secondary" to="/download">
                 获取客户端
               </Link>
+              <a className="button secondary github-button" href="https://github.com/babybitter/scenic-ai-guide" target="_blank" rel="noreferrer">
+                <Github size={19} /> GitHub
+              </a>
             </div>
             <div className="hero-proof">
               <span><CheckCircle2 size={16} /> 讯飞 × Live2D 双引擎</span>
@@ -99,37 +103,40 @@ export function HomePage() {
         <div className="container">
           <SectionHeading
             eyebrow="PRODUCT IN ACTION"
-            title="从游客到运营，每一环都有真实产品承接"
-            body="以下页面截图取自数智游踪当前项目，用产品证据对应赛题对多模态、知识库、个性化服务和运营分析的要求。"
+            title="从一次提问，看见完整景区服务"
+            body="七个页面覆盖游客导览、路线规划、景区内容运营与服务质量复盘。含真实截图与可替换占位图，后续仅需更新图片文件。"
           />
           <ProductShowcase />
         </div>
       </section>
 
-      <section className="section-pad innovation-section">
+      <section className="section-pad innovation-section" id="innovation">
         <div className="container">
           <SectionHeading
             eyebrow="INNOVATION"
             title="把“能演示”做成“不中断、可交付”"
             body="创新不只体现在模型能力，也体现在外部服务失效、网络波动和终端差异出现时，产品仍能把核心体验交付给游客。"
           />
-          <div className="innovation-grid">
+          <div className="innovation-list">
             {innovationItems.map((item, index) => {
               const Icon = innovationIcons[index]
               return (
-                <article key={item.number} className={index === 0 ? 'innovation-card feature-card' : 'innovation-card'}>
+                <article key={item.number} className="innovation-row" tabIndex={0}>
                   <div className="innovation-top">
                     <span>{item.number}</span>
                     <Icon size={26} />
                   </div>
-                  <p className="card-kicker">{item.subtitle}</p>
-                  <h3>{item.title}</h3>
-                  <p>{item.body}</p>
-                  <div className="tag-row">{item.meta.map((tag) => <span key={tag}>{tag}</span>)}</div>
+                  <div>
+                    <p className="card-kicker">{item.subtitle}</p>
+                    <h3>{item.title}</h3>
+                    <p>{item.body}</p>
+                    <div className="tag-row">{item.meta.map((tag) => <span key={tag}>{tag}</span>)}</div>
+                  </div>
                 </article>
               )
             })}
           </div>
+          <Link className="text-link" to="/innovation">查看完整技术创新说明 <ArrowRight size={16} /></Link>
         </div>
       </section>
 

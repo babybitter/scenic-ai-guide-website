@@ -1,20 +1,21 @@
 import { useEffect, useState } from 'react'
 import { Menu, Moon, Sun, X } from 'lucide-react'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { Brand } from './Brand'
 
 const navItems = [
-  { to: '/', label: '首页', end: true },
+  { to: '/', label: '主页', end: true },
   { to: '/docs', label: '文档' },
   { to: '/roadmap', label: '路线图' },
-  { to: '/feedback', label: '需求与建议' },
-  { to: '/download', label: '多端入口' },
+  { to: '/innovation', label: '项目创新点' },
 ]
 
 export function SiteLayout() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [dark, setDark] = useState(() => localStorage.getItem('theme') === 'dark')
   const [scrolled, setScrolled] = useState(false)
+  const location = useLocation()
+  const isDocs = location.pathname.startsWith('/docs')
 
   useEffect(() => {
     document.documentElement.dataset.theme = dark ? 'dark' : 'light'
@@ -82,7 +83,7 @@ export function SiteLayout() {
       <main>
         <Outlet />
       </main>
-      <footer className="site-footer">
+      {!isDocs && <footer className="site-footer">
         <div className="footer-inner">
           <div>
             <Brand />
@@ -91,6 +92,7 @@ export function SiteLayout() {
           <div className="footer-links">
             <NavLink to="/docs">项目文档</NavLink>
             <NavLink to="/roadmap">开发历程</NavLink>
+            <NavLink to="/innovation">项目创新点</NavLink>
             <NavLink to="/feedback">建议反馈</NavLink>
             <a href="https://www.shuzhiyouzong.cn" target="_blank" rel="noreferrer">在线体验</a>
           </div>
@@ -99,7 +101,7 @@ export function SiteLayout() {
           <span>© 2026 数智游踪 · 第十五届中国软件杯 A5 赛题作品</span>
           <a href="https://beian.miit.gov.cn" target="_blank" rel="noreferrer">闽ICP备2025107095号-3</a>
         </div>
-      </footer>
+      </footer>}
     </div>
   )
 }

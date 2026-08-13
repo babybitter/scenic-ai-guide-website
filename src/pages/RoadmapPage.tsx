@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom'
 import { SectionHeading } from '../components/SectionHeading'
 import { roadmapStages } from '../data/content'
 
+const stageFacts = [
+  ['Vue / Node / SQLite 双端骨架', '多模态问答与来源引用', '讯飞数字人 + Live2D 预留', '路线推荐、反馈与运营模块', 'Windows 环境检查脚本'],
+  ['地图组件域与讲解协调器', '灵山胜境 / 拈花湾双景区', '官方道路轨迹与手绘图块', 'Live2D MotionSync 口型', '知识去重与 PDF/XLSX 预览', '腾讯地图 + Leaflet'],
+  ['Electron 三系统交付', 'Windows NSIS 安装包', 'Linux AppImage / DEB', 'macOS x64 / arm64 DMG', '包体、SQLite 与启动门禁', '不可变发布与原子回滚'],
+]
+
 export function RoadmapPage() {
   return (
     <div className="subpage">
@@ -31,10 +37,24 @@ export function RoadmapPage() {
                     <div><TriangleAlert size={20} /><h3>技术问题</h3><p>{stage.problem}</p></div>
                     <div><Lightbulb size={20} /><h3>方案决策</h3><p>{stage.decision}</p></div>
                   </div>
+                  <ul className="stage-facts">{stageFacts[index].map((fact) => <li key={fact}>{fact}</li>)}</ul>
                 </div>
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="roadmap-boundaries section-pad">
+        <div className="container">
+          <SectionHeading eyebrow="CURRENT BOUNDARIES" title="当前边界，也是下一阶段的任务清单" body="路线图不只记录已经完成的内容，也公开仍需工程验证、产品验证和授权确认的部分。" />
+          <div className="boundary-list">{[
+            ['01', '知识能力', '让 PDF / XLSX 进入 RAG 索引，并定位到来源页码或工作表。'],
+            ['02', '性能度量', '量化首反馈、首字、首句和首音频的 P50 / P95 时延。'],
+            ['03', '路线语义', '继续验证可达性、无障碍与动态道路信息，但不将现有官方游线称为实时导航。'],
+            ['04', '移动交付', '推进 Android、iOS、HarmonyOS、微信小程序和移动 H5 统一游客端。'],
+            ['05', '正式发布', '完成 Windows / macOS 商业签名、公证、自动更新与第三方素材授权验收。'],
+          ].map(([number, title, body]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{body}</p></article>)}</div>
         </div>
       </section>
 

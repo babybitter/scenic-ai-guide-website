@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">个性化路线推荐页面占位图</title>
+  <desc id="desc">等待替换为数智游踪个性化路线推荐真实截图</desc>
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#edf8f4"/><stop offset="1" stop-color="#eef5fb"/></linearGradient></defs>
+  <rect width="1280" height="720" rx="32" fill="url(#g)"/><path d="M128 560c150-200 250 15 410-178s270-70 490-230" fill="none" stroke="#0a9885" stroke-width="18" stroke-linecap="round" stroke-dasharray="2 36"/><g fill="#fff" stroke="#0a9885" stroke-width="9"><circle cx="145" cy="541" r="28"/><circle cx="505" cy="415" r="28"/><circle cx="815" cy="296" r="28"/><circle cx="1028" cy="153" r="28"/></g><rect x="396" y="155" width="488" height="168" rx="24" fill="#fff" opacity=".94"/><text x="640" y="222" text-anchor="middle" fill="#17322f" font-family="sans-serif" font-size="34" font-weight="700">个性化路线推荐</text><text x="640" y="272" text-anchor="middle" fill="#657772" font-family="sans-serif" font-size="21">截图占位 · 待替换真实产品页面</text>
+</svg>
