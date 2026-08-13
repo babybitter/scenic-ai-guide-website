@@ -8,8 +8,8 @@ interface MagneticButtonProps {
   onClick?: () => void
 }
 
-const MAGNET_RADIUS = 30
-const MAGNET_STRENGTH = 0.28
+const MAGNET_RADIUS = 14
+const MAGNET_STRENGTH = 0.12
 
 export function MagneticButton({ children, className, ariaLabel, href, onClick }: MagneticButtonProps) {
   const elementRef = useRef<HTMLElement>(null)
