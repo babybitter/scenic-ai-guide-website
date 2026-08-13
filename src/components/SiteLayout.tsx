@@ -3,6 +3,7 @@ import { Check, ChevronDown, Github, Languages, Moon, Sun } from 'lucide-react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { type Locale, useLanguage } from '../context/LanguageContext'
 import { Brand } from './Brand'
+import { MagneticButton } from './MagneticButton'
 
 const GITHUB_URL = 'https://github.com/babybitter/scenic-ai-guide'
 
@@ -12,6 +13,7 @@ const layoutCopy = {
     nav: { home: '主页', docs: '文档', roadmap: '路线图', innovation: '项目创新点' },
     language: '切换语言',
     simplifiedChinese: '简体中文',
+    traditionalChinese: '繁體中文',
     english: 'English',
     lightTheme: '切换到浅色模式',
     darkTheme: '切换到深色模式',
@@ -26,11 +28,32 @@ const layoutCopy = {
     onlineExperience: '在线体验',
     copyright: '© 2026 数智游踪 · 第十五届中国软件杯 A5 赛题作品',
   },
+  'zh-TW': {
+    navigation: '主導覽',
+    nav: { home: '主頁', docs: '文件', roadmap: '路線圖', innovation: '專案創新點' },
+    language: '切換語言',
+    simplifiedChinese: '简体中文',
+    traditionalChinese: '繁體中文',
+    english: 'English',
+    lightTheme: '切換到淺色模式',
+    darkTheme: '切換到深色模式',
+    openMenu: '開啟選單',
+    closeMenu: '關閉選單',
+    appearance: '外觀',
+    footerDescription: '讓景區知識被看見，讓每一次遊覽都被理解。',
+    footerDocs: '專案文件',
+    footerRoadmap: '開發歷程',
+    footerInnovation: '專案創新點',
+    footerFeedback: '建議回饋',
+    onlineExperience: '線上體驗',
+    copyright: '© 2026 數智遊蹤 · 第十五屆中國軟件杯 A5 賽題作品',
+  },
   en: {
     navigation: 'Main navigation',
     nav: { home: 'Home', docs: 'Docs', roadmap: 'Roadmap', innovation: 'Innovation' },
     language: 'Change language',
     simplifiedChinese: '简体中文',
+    traditionalChinese: '繁體中文',
     english: 'English',
     lightTheme: 'Switch to light mode',
     darkTheme: 'Switch to dark mode',
@@ -81,7 +104,7 @@ export function SiteLayout() {
         const delta = currentScrollY - lastScrollY.current
 
         setScrolled(currentScrollY > 12)
-        if (menuOpen || currentScrollY <= 12) {
+        if (isDocs || menuOpen || currentScrollY <= 12) {
           setHeaderHidden(false)
         } else if (currentScrollY > 80 && delta > 0) {
           setHeaderHidden(true)
@@ -103,7 +126,7 @@ export function SiteLayout() {
         scrollFrame.current = null
       }
     }
-  }, [menuOpen])
+  }, [isDocs, menuOpen])
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -216,20 +239,23 @@ export function SiteLayout() {
                     <span>{copy.english}</span>
                     {locale === 'en' && <Check size={15} />}
                   </button>
+                  <button className={locale === 'zh-TW' ? 'current' : undefined} type="button" role="menuitem" onClick={() => selectLocale('zh-TW')}>
+                    <span>{copy.traditionalChinese}</span>
+                    {locale === 'zh-TW' && <Check size={15} />}
+                  </button>
                 </div>
               )}
             </div>
-            <button
+            <MagneticButton
               className="icon-button desktop-theme-button"
-              type="button"
-              aria-label={dark ? copy.lightTheme : copy.darkTheme}
+              ariaLabel={dark ? copy.lightTheme : copy.darkTheme}
               onClick={() => setDark((value) => !value)}
             >
               {dark ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
-            <a className="icon-button header-github-link" href={GITHUB_URL} target="_blank" rel="noreferrer" aria-label="GitHub">
+            </MagneticButton>
+            <MagneticButton className="icon-button header-github-link" href={GITHUB_URL} ariaLabel="GitHub">
               <Github size={19} />
-            </a>
+            </MagneticButton>
             <button
               className={`menu-button ${menuOpen ? 'is-open' : ''}`}
               type="button"

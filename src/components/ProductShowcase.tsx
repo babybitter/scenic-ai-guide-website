@@ -53,11 +53,11 @@ export function ProductShowcase() {
             </figure>
           ))}
         </div>
-        <div className="showcase-summary" aria-live="polite">
-          <span>{slide.eyebrow}</span>
-          <b>{slide.description}</b>
-          <div>{slide.facts.map((fact) => <small key={fact}>{fact}</small>)}</div>
-        </div>
+      </div>
+      <div className="showcase-summary" aria-live="polite">
+        <span>{slide.eyebrow}</span>
+        <b>{slide.description}</b>
+        <div>{slide.facts.map((fact) => <small key={fact}>{fact}</small>)}</div>
       </div>
     </div>
   )

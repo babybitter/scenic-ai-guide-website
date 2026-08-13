@@ -29,7 +29,7 @@ export function RoadmapPage() {
                 <div className="stage-rail"><span>{index + 1}</span></div>
                 <div className="stage-content">
                   <div className="stage-heading">
-                    <div><span>{stage.phase} · {stage.date}</span><h2>{stage.title}</h2></div>
+                    <div><span>{stage.phase}阶段</span><h2>{stage.title}</h2></div>
                     <b>PHASE 0{index + 1}</b>
                   </div>
                   <div className="stage-details">

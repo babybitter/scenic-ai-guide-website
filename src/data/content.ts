@@ -110,7 +110,6 @@ export const innovationItems = [
 export const roadmapStages = [
   {
     phase: '初期',
-    date: '2026.07.14 — 07.18',
     title: 'MVP 最小可行版本',
     progress: '搭建 Vue 3 游客/管理双端与 Node.js 服务，完成 SQLite、景区知识库、文字/语音问答、讯飞数字人、路线推荐和基础运营模块。',
     problem: '早期内存数据难以支持完整业务闭环；浏览器自动播放策略会阻断数字人声音；路线仅凭兴趣时长选择，边界不稳定。',
@@ -118,7 +117,6 @@ export const roadmapStages = [
   },
   {
     phase: '中期',
-    date: '2026.08.06 — 08.11',
     title: '架构重构与能力融合',
     progress: '将地图图块、真实道路轨迹、多景区切换、全景入口和数字人讲解统一到地图导览运行时；补充 Live2D、音频适配器与知识上传链路。',
     problem: '外部地图/全景资源具有网络和授权不确定性；浏览器数字人 SDK 无法保证全平台表现；大型页面状态互相牵连。',
@@ -126,7 +124,6 @@ export const roadmapStages = [
   },
   {
     phase: '后期',
-    date: '2026.08.12 — 至今',
     title: '细节打磨与交付收敛',
     progress: '完成同源生产部署、跨平台 Electron 打包、暗色/多语言、知识文档预览、响应式地图与 Linux 便携包验证，持续收敛比赛演示动线。',
     problem: '桌面包需要携带可复现的 Node/SQLite 运行环境；弱网、凭证缺失和多操作系统差异容易破坏现场演示。',
@@ -155,14 +152,4 @@ export const feedbackScenarios = [
     body: '“现场活动时间和导览里的信息不一致，希望景区确认后尽快更新。”',
     tag: '内容准确',
   },
-]
-
-export const domains = [
-  ['shuzhiyouzong.cn', '品牌主站', '官方介绍、创新点、路线图与产品入口'],
-  ['app.shuzhiyouzong.cn', '游客 / 演示端', '面向评委和游客的在线体验'],
-  ['admin.shuzhiyouzong.cn', '景区运营端', '知识、数字人、会话与运营管理'],
-  ['docs.shuzhiyouzong.cn', '文档站', '介绍、安装部署、操作指南、技术选型'],
-  ['download.shuzhiyouzong.cn', '下载中心', '由自有 Linux 服务器分发安装包'],
-  ['api.shuzhiyouzong.cn', '统一 API', '业务接口、流式问答与健康检查'],
-  ['status.shuzhiyouzong.cn', '服务状态', '后续用于状态公告与可用性记录'],
 ]

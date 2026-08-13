@@ -22,7 +22,7 @@ import { Link } from 'react-router-dom'
 import { ProductShowcase } from '../components/ProductShowcase'
 import { SectionHeading } from '../components/SectionHeading'
 import { useLanguage } from '../context/LanguageContext'
-import { domains, innovationItems, roadmapStages } from '../data/content'
+import { innovationItems, roadmapStages } from '../data/content'
 import { downloadTargets, futureTargets } from '../data/downloads'
 
 const valueSteps = [
@@ -204,26 +204,13 @@ export function HomePage() {
             {roadmapStages.map((stage, index) => (
               <article key={stage.title}>
                 <div className="timeline-dot">{index + 1}</div>
-                <span>{stage.date}</span>
+                <span>{stage.phase}阶段</span>
                 <h3>{stage.title}</h3>
                 <p>{stage.progress}</p>
               </article>
             ))}
           </div>
           <Link className="text-link" to="/roadmap">阅读完整开发历程 <ArrowRight size={16} /></Link>
-        </div>
-      </section>
-
-      <section className="domain-section section-pad">
-        <div className="container domain-panel">
-          <div>
-            <span className="eyebrow">DOMAIN PLAN</span>
-            <h2>一套清晰的产品域名体系</h2>
-            <p>主站、体验端、管理端、文档、下载与 API 各司其职，便于后续独立部署、权限隔离与缓存配置。</p>
-          </div>
-          <div className="domain-list">
-            {domains.slice(0, 6).map(([domain, name]) => <span key={domain}><b>{domain}</b><small>{name}</small></span>)}
-          </div>
         </div>
       </section>
 

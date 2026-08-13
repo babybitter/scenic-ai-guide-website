@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 
-export type Locale = 'zh-CN' | 'en'
+export type Locale = 'zh-CN' | 'zh-TW' | 'en'
 
 interface LanguageContextValue {
   locale: Locale
@@ -47,6 +47,25 @@ const commonCopy = {
     openWeb: 'Open web app',
     downloadStatus: 'View downloads',
   },
+  'zh-TW': {
+    competition: '第十五屆中國軟件杯 · A5 賽題作品',
+    heroLineOne: '讓每一步遊覽，',
+    heroLineTwo: '都有智能相伴',
+    heroBody: '數智遊蹤面向景區遊客與營運方，把 AI 數字人、可信知識問答、地圖導覽、個人化路線與服務洞察連成一條可落地的智慧文旅服務鏈。',
+    tryOnline: '線上體驗',
+    getClient: '取得客戶端',
+    proofAvatar: '訊飛 × Live2D 雙引擎',
+    proofMap: '騰訊地圖 × Leaflet 雙底圖',
+    proofRag: '本地 RAG 知識庫',
+    accessEyebrow: 'ACCESS EVERYWHERE',
+    accessTitle: '選擇適合你的使用方式',
+    accessBody: '網頁端立即體驗，桌面端面向穩定展示與景區終端交付；安裝包統一由自有 Linux 下載伺服器分發，不依賴 GitHub Release。',
+    availableNow: '現在可用',
+    noInstall: '免安裝 · 瀏覽器即開即用',
+    directDownload: '自有伺服器直接下載',
+    openWeb: '開啟網頁版',
+    downloadStatus: '查看下載狀態',
+  },
 } as const
 
 export type TranslationKey = keyof typeof commonCopy['zh-CN']
@@ -67,7 +86,8 @@ export function useLanguage() {
 
 function getStoredLocale(): Locale {
   try {
-    return window.localStorage.getItem(LANGUAGE_STORAGE_KEY) === 'en' ? 'en' : 'zh-CN'
+    const stored = window.localStorage.getItem(LANGUAGE_STORAGE_KEY)
+    return stored === 'en' || stored === 'zh-TW' ? stored : 'zh-CN'
   } catch {
     return 'zh-CN'
   }
