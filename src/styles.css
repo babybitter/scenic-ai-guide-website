@@ -334,35 +334,12 @@ h1, h2, h3, p { margin-top: 0; }
 .compare-table > div:last-child > * { border-bottom: 0; }
 .compare-table > div:first-child { background: var(--soft); }
 .compare-table b { color: var(--ink); }
-.thanks-hero { position: relative; margin: 8px 0 32px; padding: 28px; border: 1px solid color-mix(in srgb, var(--teal) 24%, var(--line)); border-radius: 18px; overflow: hidden; background: linear-gradient(135deg, color-mix(in srgb, var(--teal) 9%, var(--paper)), var(--paper)); scroll-margin-top: 100px; }
-.thanks-hero::after { position: absolute; width: 170px; height: 170px; right: -72px; bottom: -96px; border: 1px solid color-mix(in srgb, var(--teal) 24%, transparent); border-radius: 50%; content: ''; }
-.thanks-hero-mark { position: relative; z-index: 1; display: flex; align-items: center; gap: 11px; color: var(--teal-dark); }
-.thanks-hero-mark span { font: 700 9px ui-monospace, monospace; letter-spacing: .17em; }
-.thanks-hero p { position: relative; z-index: 1; margin: 18px 0 0; color: var(--ink); font-family: 'Noto Serif SC', serif; font-size: 17px; line-height: 1.95; }
-.thanks-credit-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-.thanks-credit-card { position: relative; padding: 25px; border: 1px solid var(--line); border-radius: 15px; background: var(--soft); }
-.thanks-credit-icon { position: absolute; top: 22px; right: 22px; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: color-mix(in srgb, var(--teal) 12%, var(--paper)); color: var(--teal-dark); }
-.thanks-credit-card > span { color: var(--teal-dark); font: 700 9px ui-monospace, monospace; letter-spacing: .13em; }
-.thanks-credit-card h3 { max-width: calc(100% - 44px); margin: 12px 0 14px; font-family: 'Noto Serif SC', serif; font-size: 19px; line-height: 1.55; }
-.thanks-credit-card p { margin: 0; font-size: 13px; line-height: 1.85; }
-.thanks-organization { margin: 20px 0; padding: 24px; border-left: 3px solid var(--teal); background: var(--soft); }
-.thanks-organization-title, .thanks-inline-heading { display: flex; align-items: center; gap: 10px; color: var(--ink); }
-.thanks-organization-title svg, .thanks-inline-heading svg { color: var(--teal-dark); flex-shrink: 0; }
-.thanks-organization-list { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
-.thanks-organization-list span { padding: 8px 11px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); color: var(--muted); font-size: 11px; }
-.thanks-contact-grid { margin: 20px 0 10px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-.thanks-contact-card { min-width: 0; padding: 17px; border: 1px solid var(--line); border-radius: 13px; display: grid; grid-template-columns: 1fr auto; gap: 12px; background: var(--paper); color: var(--ink); cursor: pointer; transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; }
-.thanks-contact-card:hover, .thanks-contact-card:focus-visible { border-color: color-mix(in srgb, var(--teal) 58%, var(--line)); box-shadow: 0 10px 28px color-mix(in srgb, var(--teal) 10%, transparent); transform: translateY(-3px); outline: none; }
-.thanks-contact-card div { min-width: 0; display: grid; gap: 4px; }
-.thanks-contact-card strong { font-size: 14px; }
-.thanks-contact-card span { color: var(--muted); font-size: 9px; }
-.thanks-contact-card svg { color: var(--teal-dark); }
-.thanks-contact-card small { grid-column: 1 / -1; overflow: hidden; color: var(--muted); font: 11px ui-monospace, monospace; text-overflow: ellipsis; white-space: nowrap; }
-.thanks-inline-heading { margin: 20px 0 12px; }
-.thanks-closing { margin-top: 24px; padding: 26px; border: 1px solid color-mix(in srgb, var(--teal) 28%, var(--line)); border-radius: 15px; display: grid; grid-template-columns: auto 1fr; gap: 17px; background: color-mix(in srgb, var(--teal) 7%, var(--paper)); }
-.thanks-closing > svg { color: var(--teal-dark); }
-.thanks-closing b { font-family: 'Noto Serif SC', serif; font-size: 18px; }
-.thanks-closing p { margin: 9px 0 0; font-size: 13px; }
+.thanks-prose h1 { margin-bottom: 16px; font-size: 32px; line-height: 1.25; }
+.thanks-prose h2 { margin: 48px 0 16px; padding-top: 0; border-top: 0; font-size: 24px; line-height: 1.35; }
+.thanks-prose h3 { margin: 32px 0 8px; font-family: 'Noto Serif SC', serif; font-size: 20px; line-height: 1.4; }
+.thanks-prose p { margin: 16px 0; color: var(--muted); font-size: 16px; line-height: 1.75; }
+.thanks-mail-link { color: var(--teal-dark); cursor: pointer; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--teal) 38%, transparent); text-underline-offset: 3px; transition: color .2s ease, text-decoration-color .2s ease; }
+.thanks-mail-link:hover, .thanks-mail-link:focus-visible { color: var(--teal); text-decoration-color: currentColor; outline: none; }
 .docs-toc { position: sticky; top: 112px; align-self: start; padding-left: 18px; border-left: 1px solid var(--line); display: grid; gap: 11px; }
 .docs-toc b { margin-bottom: 4px; font-size: 12px; }
 .docs-toc a { color: var(--muted); font-size: 11px; line-height: 1.55; }
@@ -519,8 +496,6 @@ h1, h2, h3, p { margin-top: 0; }
   .compare-table > div > *:last-child { border-bottom: 0; }
   .compare-table > div:first-child { display: none; }
   .stat-table { grid-template-columns: 1fr; }
-  .thanks-credit-grid, .thanks-contact-grid { grid-template-columns: 1fr; }
-  .thanks-hero, .thanks-credit-card, .thanks-organization, .thanks-closing { padding: 22px; }
   .docs-pager { grid-template-columns: 1fr; }
   .innovation-detail-list article { grid-template-columns: 46px 1fr; gap: 16px; padding: 32px 0; }
   .innovation-detail-number svg { display: none; }
