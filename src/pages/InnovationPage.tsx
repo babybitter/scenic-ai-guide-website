@@ -4,7 +4,7 @@ import { SectionHeading } from '../components/SectionHeading'
 const innovations = [
   {
     number: '01', icon: Layers3, title: '一套业务，覆盖多端', subtitle: 'FULL-STACK MULTI-PLATFORM DELIVERY',
-    body: 'Vue 3 游客端与管理端、Node.js 同源服务和 Electron 桌面运行时共享业务模型。Web、Windows、Linux 与 macOS 已形成可运行交付；Android、iOS、HarmonyOS、微信小程序和移动 H5 作为下一阶段适配目标。',
+    body: 'Vue 3 游客端与管理端、Node.js 同源服务和 Electron 桌面运行时共享业务模型。Web、Windows、Linux、macOS、Android 与 HarmonyOS 已形成可运行交付；微信小程序保留发布入口并等待二维码更新。',
     note: '多端不是简单套壳：网络、文件、音频、地图、权限与本地服务能力均进入平台适配层。',
   },
   {

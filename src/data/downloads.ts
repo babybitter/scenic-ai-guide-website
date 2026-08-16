@@ -14,6 +14,8 @@ export interface DownloadTarget {
 
 export const webAppUrl = 'https://www.shuzhiyouzong.cn'
 export const downloadHost = 'https://www.shuzhiyouzong.cn/downloads'
+export const androidDownloadUrl = `${downloadHost}/shuzhiyouzong-1.0.0-android.apk`
+export const harmonyDownloadUrl = `${downloadHost}/shuzhiyouzong-1.0.0-harmony.hap`
 
 export const downloadTargets: DownloadTarget[] = [
   {
@@ -62,12 +64,30 @@ export const downloadTargets: DownloadTarget[] = [
     status: 'ready',
     badge: '评审测试包',
   },
+  {
+    id: 'android',
+    title: 'Android App',
+    platform: 'Android 8.0 及以上',
+    format: 'APK',
+    description: '面向游客随身使用的移动导览客户端，覆盖问答、地图、讲解与路线体验。',
+    href: androidDownloadUrl,
+    status: 'ready',
+    badge: 'v1.0.0',
+  },
+  {
+    id: 'harmony',
+    title: 'HarmonyOS 客户端',
+    platform: 'HarmonyOS NEXT',
+    format: 'HAP',
+    description: '基于鸿蒙原生能力交付的游客端安装包，延续统一的景区导览服务流程。',
+    href: harmonyDownloadUrl,
+    status: 'ready',
+    badge: 'v1.0.0',
+  },
 ]
 
-export const futureTargets = [
-  { name: 'Android App', note: '原生移动体验' },
-  { name: 'iOS', note: 'App Store 规划' },
-  { name: 'HarmonyOS', note: '鸿蒙原生适配' },
-  { name: '微信小程序', note: '扫码即用' },
-  { name: '移动端 H5', note: '全浏览器覆盖' },
+export const mobileTargets = [
+  { name: 'Android App', note: 'APK v1.0.0 已开放', status: 'ready', href: androidDownloadUrl },
+  { name: 'HarmonyOS', note: 'HAP v1.0.0 已开放', status: 'ready', href: harmonyDownloadUrl },
+  { name: '微信小程序', note: '入口保留 · 二维码待更新', status: 'soon' },
 ]

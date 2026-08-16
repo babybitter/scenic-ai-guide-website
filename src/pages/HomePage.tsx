@@ -16,6 +16,7 @@ import {
   MessageCircleMore,
   Route,
   Sparkles,
+  Smartphone,
   TerminalSquare,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
@@ -23,7 +24,7 @@ import { ProductShowcase } from '../components/ProductShowcase'
 import { SectionHeading } from '../components/SectionHeading'
 import { useLanguage } from '../context/LanguageContext'
 import { innovationItems, roadmapStages } from '../data/content'
-import { downloadTargets, futureTargets } from '../data/downloads'
+import { downloadTargets, mobileTargets } from '../data/downloads'
 
 const valueSteps = [
   { icon: MapPinned, title: '感知游客场景', body: '景点、位置、时间、兴趣与体力成为服务上下文。' },
@@ -33,7 +34,7 @@ const valueSteps = [
 ]
 
 const innovationIcons = [Layers3, AudioLines, MapPinned, BookOpenCheck]
-const accessIcons = [Globe2, Laptop, TerminalSquare, Compass]
+const accessIcons = [Globe2, Laptop, TerminalSquare, Compass, Smartphone, Layers3]
 
 export function HomePage() {
   const { locale, t } = useLanguage()
@@ -165,15 +166,15 @@ export function HomePage() {
                     <span className="format-badge">{target.format}</span>
                   </div>
                   <span className="status-ready">{t('availableNow')}</span>
-                  <h3>{isEnglish ? ['Web app', 'Windows client', 'Linux client', 'macOS client'][index] : target.title}</h3>
+                  <h3>{isEnglish ? ['Web app', 'Windows client', 'Linux client', 'macOS client', 'Android app', 'HarmonyOS app'][index] : target.title}</h3>
                   <b>{target.platform}</b>
                   <p>{target.description}</p>
                   <div className="access-card-meta">
                     <span>{isWeb ? t('noInstall') : t('directDownload')}</span>
-                    {isWeb ? (
-                      <a href="https://www.shuzhiyouzong.cn" target="_blank" rel="noreferrer">{t('openWeb')} <ExternalLink size={15} /></a>
+                    {target.href ? (
+                      <a href={target.href} target={isWeb ? '_blank' : undefined} rel={isWeb ? 'noreferrer' : undefined}>{isWeb ? t('openWeb') : t('downloadNow')} <ExternalLink size={15} /></a>
                     ) : (
-                      <Link to="/download">{t('downloadStatus')} <ArrowRight size={15} /></Link>
+                      <Link to="/download">{t('choosePackage')} <ArrowRight size={15} /></Link>
                     )}
                   </div>
                 </article>
@@ -182,12 +183,12 @@ export function HomePage() {
           </div>
           <div className="future-platforms">
             <div>
-              <span className="eyebrow">NEXT · FULL FIVE-PLATFORM</span>
-              <h3>移动游客端，全五端共用一套体验逻辑</h3>
-              <p>规划中的移动端以 uni-app x Vapor 为底座，核心页面与平台能力通过适配层分级实现。</p>
+              <span className="eyebrow">MOBILE · THREE-PLATFORM</span>
+              <h3>移动游客端，三端发布路径</h3>
+              <p>Android App 与 HarmonyOS 安装包现已开放；微信小程序继续保留入口，待二维码更新后补齐扫码体验。</p>
             </div>
             <div className="future-list">
-              {futureTargets.map((target) => <span key={target.name}><b>{target.name}</b><small>{target.note}</small></span>)}
+              {mobileTargets.map((target) => <span key={target.name} className={target.status}><b>{target.name}</b><small>{target.note}</small></span>)}
             </div>
           </div>
         </div>

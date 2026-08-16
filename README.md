@@ -8,7 +8,7 @@
 - `/docs/*`：项目介绍、安装部署、使用指南、技术选型对比与致谢
 - `/roadmap`：MVP、架构重构、交付收敛及后续边界
 - `/innovation`：七项工程创新的独立高密度说明页
-- `/download`：Web 与 Windows、Linux、macOS 评审测试包
+- `/download`：Web、Windows、Linux、macOS、Android 与 HarmonyOS 下载入口
 
 产品轮播配置位于 `src/data/content.ts`。其中 `placeholder-*.svg` 为等待替换的明确占位图；获得产品截图后保持文件名或更新 `image` 字段即可。
 
@@ -37,7 +37,7 @@ npm run build
 - `api.shuzhiyouzong.cn`：服务 API
 - `status.shuzhiyouzong.cn`：服务状态
 
-下载链接集中维护在 `src/data/downloads.ts`。当前网页端与三类桌面评审测试包均已接入自有服务器直链；移动五端继续保持“规划中”状态。
+下载链接集中维护在 `src/data/downloads.ts`。当前网页端、三类桌面评审测试包、Android APK 与 HarmonyOS HAP 均已接入自有服务器直链；微信小程序保留发布位置，待二维码更新后开放。
 
 ## 部署
 
@@ -47,4 +47,4 @@ npm run build
 PUBLIC_BASE_PATH=/website-preview/ npm run build
 ```
 
-当前评审测试包通过 `www.shuzhiyouzong.cn/downloads/` 由自有 Linux 服务器分发；`download` 子域名完成 DNS 与证书配置后可再迁移到独立入口。
+当前安装包通过 `www.shuzhiyouzong.cn/downloads/` 由自有 Linux 服务器分发。该路径启用 Nginx 目录索引，访问目录可查看下载站，访问完整文件名可直接下载；配置样例位于 `deploy/nginx/scenic-downloads.conf`。

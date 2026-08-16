@@ -29,14 +29,14 @@ const pages: DocPage[] = [
       <h2 id="roles">适用角色与场景</h2>
       <h3>景区访客</h3><p>通过文字或语音询问景点历史、服务设施与游览建议；查看答案来源；由数字人播报讲解；在灵山胜境与拈花湾地图中浏览景点、官方游线和全景入口；按时长、兴趣、同行人群与体力情况获取个性化路线。</p>
       <h3>景区运营人员</h3><p>维护文档、景点与固定问答，配置数字人形象和音色，查看服务量、满意度、热门问题和景点关注，回溯低满意会话并形成知识补充草稿。</p>
-      <h3>部署与评审人员</h3><p>可使用网页端，或通过 Windows、Linux、macOS 桌面客户端运行；云端服务不可用时，系统仍保留本地知识、手绘地图、Live2D、字幕与文本等降级路径。</p>
+      <h3>部署与评审人员</h3><p>可使用网页端，通过 Windows、Linux、macOS 桌面客户端运行，也可下载 Android APK 与 HarmonyOS HAP 体验移动游客端；云端服务不可用时，系统仍保留本地知识、手绘地图、Live2D、字幕与文本等降级路径。</p>
       <h2 id="loop">核心服务闭环</h2>
       <ol><li>游客通过文字或语音描述所在景点、兴趣与时间。</li><li>服务端从本地景区知识检索事实，生成带来源和耗时标签的回答。</li><li>语音与数字人负责呈现，地图和路线继续承接游中服务。</li><li>评分、评论和会话回流管理端，形成内容修正与运营建议。</li></ol>
       <h2 id="data">已接入数据范围</h2>
       <div className="stat-table"><div><b>灵山胜境</b><span>218 个迁移点位</span><span>6 条游客可见官方游线</span><span>19 个全景记录</span></div><div><b>拈花湾</b><span>277 个迁移点位</span><span>7 条官方游线</span><span>15 个全景记录</span></div></div>
       <p>路线折线保留来源道路轨迹，不以景点间直线冒充步行导航；点位、路线、图块与媒体迁移均保留机器可读审计结果。</p>
       <h2 id="limits">能力边界</h2>
-      <div className="docs-callout warning"><b>能力边界说明</b><p>推荐游线不是实时导航，不含动态道路、施工绕行与无障碍通行承诺。DOCX、TXT、Markdown 可进入知识索引；PDF、XLSX 已支持上传预览，但尚未进入 RAG 索引。移动五端列入扩展范围。</p></div>
+      <div className="docs-callout warning"><b>能力边界说明</b><p>推荐游线不是实时导航，不含动态道路、施工绕行与无障碍通行承诺。DOCX、TXT、Markdown 可进入知识索引；PDF、XLSX 已支持上传预览，但尚未进入 RAG 索引。移动游客端当前提供 Android 与 HarmonyOS 安装包，微信小程序入口待二维码更新。</p></div>
     </>,
   },
   {
@@ -48,7 +48,7 @@ const pages: DocPage[] = [
       { id: 'backup', label: '备份与故障排查' },
     ],
     content: <>
-      <h1>安装与部署指南</h1><p className="lead">从本地开发到 Linux 生产环境，再到三类桌面安装包，以下步骤均对应项目工程。</p>
+      <h1>安装与部署指南</h1><p className="lead">从本地开发到 Linux 生产环境，再到桌面与移动安装包，以下步骤均对应项目工程。</p>
       <h2 id="requirements">环境要求</h2>
       <div className="compare-table"><div><b>组件</b><b>要求</b><b>说明</b></div><div><span>Node.js</span><span>服务端 ≥20；Web ≥20.19；桌面构建 ≥22</span><span>桌面运行时由 Electron 携带</span></div><div><span>包管理器</span><span>服务端 npm；Web 端 pnpm</span><span>建议锁定依赖版本</span></div><div><span>数据库</span><span>SQLite</span><span>无需单独安装数据库服务</span></div><div><span>网络</span><span>按能力可选</span><span>云 LLM、讯飞与腾讯地图需要联网；Demo 和本地能力可降级</span></div></div>
       <h2 id="development">本地开发</h2>
@@ -56,7 +56,7 @@ const pages: DocPage[] = [
       <p>服务端默认监听 <code>127.0.0.1:5178</code>，Vite 将 <code>/api</code> 代理至服务端。生产环境不得继续使用默认管理员密码、开发 JWT Secret 或 Mock 凭证。</p>
       <h2 id="windows">Windows 一键安装</h2><pre><code>{`.\\scripts\\setup-windows.ps1\n\n# 只检查环境，不安装或改写数据\n.\\scripts\\setup-windows.ps1 -CheckOnly`}</code></pre><p>脚本检查 Node、pnpm、端口、磁盘、依赖、SQLite、检索、路线、数字人降级、前端构建和健康接口。</p>
       <h2 id="production">生产部署</h2><pre><code>{`cd web\npnpm build\n\ncd ../server\nnpm start`}</code></pre><p>Node 服务同源提供 API、Web 构建产物与 SPA 回退，Nginx 负责 HTTPS、SSE、WebSocket 和静态缓存。正式发布采用不可变 release 目录与软链接原子切换，上线前先备份数据并通过健康检查。</p>
-      <h2 id="desktop">桌面客户端</h2><p>Electron 封装现有 Vue 前端与 Node 服务，在本机回环地址使用随机端口，数据写入用户目录。Windows 提供 x64 NSIS；Linux 提供 AppImage / DEB；macOS 提供 Intel 与 Apple Silicon DMG。</p><div className="docs-callout warning"><b>评审测试包</b><p>Windows 与 macOS 评审包尚未完成商业签名或公证，首次启动可能出现系统安全提示；请从官方下载入口获取并核对 SHA-256。</p></div>
+      <h2 id="desktop">桌面与移动客户端</h2><p>Electron 封装现有 Vue 前端与 Node 服务，在本机回环地址使用随机端口，数据写入用户目录。Windows 提供 x64 NSIS；Linux 提供 AppImage / DEB；macOS 提供 Intel 与 Apple Silicon DMG。移动游客端提供 Android APK 与 HarmonyOS HAP，微信小程序入口待二维码更新。</p><div className="docs-callout warning"><b>评审测试包</b><p>Windows 与 macOS 评审包尚未完成商业签名或公证，首次启动时可能出现系统安全提示；请从官方下载入口获取并核对 SHA-256。</p></div>
       <h2 id="variables">环境变量</h2><ul><li><b>模型：</b><code>LLM_PROVIDER</code>、<code>LLM_BASE_URL</code>、<code>LLM_MODEL</code>、<code>LLM_API_KEY</code>、<code>DEMO_MODE</code>。</li><li><b>数据：</b><code>SQLITE_PATH</code>、数据目录与上传目录。</li><li><b>数字人：</b>讯飞 App ID、API Key、API Secret、默认形象与音色。</li><li><b>地图：</b><code>VITE_TENCENT_MAP_KEY</code>，浏览器可见 Key 必须绑定域名白名单。</li></ul>
       <h2 id="backup">备份与故障排查</h2><pre><code>{`cd server\nnpm run backup\n\n# 恢复前先确认目标备份目录\nnpm run restore -- backups/<backup-folder>`}</code></pre><ul><li>讯飞连接失败：检查外网、额度和域名配置，正文仍可退至 Live2D、普通音频或文本。</li><li>腾讯地图不显示：检查 Key 与白名单，页面会回退至 Leaflet 手绘地图。</li><li>模型不可用：检查模型 ID、Base URL 与密钥，评审环境可使用明确标记的 Demo 模式。</li><li>桌面包无法启动：确认系统架构、安全提示与安装包 SHA-256。</li></ul>
     </>,

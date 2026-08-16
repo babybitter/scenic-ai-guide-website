@@ -81,8 +81,8 @@ export const innovationItems = [
     number: '01',
     title: '一套业务，覆盖多端',
     subtitle: 'Full-stack multi-platform delivery',
-    body: '以 Vue 3 游客/管理 Web、Node.js 同源服务与 Electron 桌面运行时构成当前交付底座；移动游客端按 Android、iOS、HarmonyOS、微信小程序、H5 共用领域模型继续演进。',
-    meta: ['Web', 'Windows', 'Linux', 'macOS', '五端规划'],
+    body: '以 Vue 3 游客/管理 Web、Node.js 同源服务与 Electron 桌面运行时构成当前交付底座；移动游客端收敛为 Android App、HarmonyOS 与微信小程序三端，前两端已形成安装包交付。',
+    meta: ['Web', 'Windows', 'Linux', 'macOS', 'Android', 'HarmonyOS'],
   },
   {
     number: '02',
@@ -127,7 +127,7 @@ export const roadmapStages = [
     title: '细节打磨与交付收敛',
     progress: '完成同源生产部署、跨平台 Electron 打包、暗色/多语言、知识文档预览、响应式地图与 Linux 便携包验证，持续收敛比赛演示动线。',
     problem: '桌面包需要携带可复现的 Node/SQLite 运行环境；弱网、凭证缺失和多操作系统差异容易破坏现场演示。',
-    decision: '以不可变发布、健康检查、离线 Demo 与自动化包体校验构建交付门禁；移动五端采用统一适配层分阶段验证。',
+    decision: '以不可变发布、健康检查、离线 Demo 与自动化包体校验构建交付门禁；移动游客端以 Android、HarmonyOS 与微信小程序三端统一适配层分阶段验证。',
   },
 ]
 
