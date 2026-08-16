@@ -189,6 +189,13 @@ h1, h2, h3, p { margin-top: 0; }
 .access-card-meta { position: relative; z-index: 1; margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .access-card-meta > span { color: var(--muted); font-size: 10px; }
 .access-card-meta a { display: inline-flex; align-items: center; gap: 6px; color: var(--teal-dark); font-size: 11px; font-weight: 700; white-space: nowrap; }
+.access-card-meta.has-options { display: block; }
+.access-card-meta.has-options > span { display: block; margin-bottom: 10px; }
+.access-card-downloads { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.access-card-downloads a { min-width: 0; padding: 10px 9px; border: 1px solid color-mix(in srgb, var(--teal) 28%, var(--line)); border-radius: 10px; justify-content: space-between; background: color-mix(in srgb, var(--teal) 6%, var(--paper)); transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.access-card-downloads a:hover { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 12%, var(--paper)); transform: translateY(-1px); }
+.access-card-downloads a span { overflow: hidden; text-overflow: ellipsis; }
+.access-card-downloads a small { color: var(--muted); font-size: 9px; font-weight: 600; }
 .status-ready, .status-soon { width: fit-content; display: inline-flex; align-items: center; gap: 5px; color: var(--teal-dark); font-size: 10px; font-weight: 700; }
 .status-soon { color: var(--gold); }
 .desktop-access-grid { display: grid; gap: 12px; }

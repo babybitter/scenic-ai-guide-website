@@ -28,7 +28,6 @@ const commonCopy = {
     openWeb: '打开网页版',
     downloadStatus: '查看下载状态',
     downloadNow: '直接下载',
-    choosePackage: '选择安装包',
   },
   en: {
     competition: '15th China Software Cup · A5 Project',
@@ -49,7 +48,6 @@ const commonCopy = {
     openWeb: 'Open web app',
     downloadStatus: 'View downloads',
     downloadNow: 'Download now',
-    choosePackage: 'Choose package',
   },
   'zh-TW': {
     competition: '第十五屆中國軟件杯 · A5 賽題作品',
@@ -70,7 +68,6 @@ const commonCopy = {
     openWeb: '開啟網頁版',
     downloadStatus: '查看下載狀態',
     downloadNow: '直接下載',
-    choosePackage: '選擇安裝包',
   },
 } as const
 

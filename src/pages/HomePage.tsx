@@ -169,12 +169,16 @@ export function HomePage() {
                   <h3>{isEnglish ? ['Web app', 'Windows client', 'Linux client', 'macOS client', 'Android app', 'HarmonyOS app'][index] : target.title}</h3>
                   <b>{target.platform}</b>
                   <p>{target.description}</p>
-                  <div className="access-card-meta">
+                  <div className={`access-card-meta ${target.links ? 'has-options' : ''}`}>
                     <span>{isWeb ? t('noInstall') : t('directDownload')}</span>
-                    {target.href ? (
+                    {target.links ? (
+                      <div className="access-card-downloads">
+                        {target.links.map((link) => <a key={link.href} href={link.href}><span>{link.label}</span><small>{t('downloadNow')}</small><ArrowRight size={15} /></a>)}
+                      </div>
+                    ) : target.href ? (
                       <a href={target.href} target={isWeb ? '_blank' : undefined} rel={isWeb ? 'noreferrer' : undefined}>{isWeb ? t('openWeb') : t('downloadNow')} <ExternalLink size={15} /></a>
                     ) : (
-                      <Link to="/download">{t('choosePackage')} <ArrowRight size={15} /></Link>
+                      <Link to="/download">{t('downloadStatus')} <ArrowRight size={15} /></Link>
                     )}
                   </div>
                 </article>

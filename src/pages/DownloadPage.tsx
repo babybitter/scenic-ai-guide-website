@@ -34,7 +34,7 @@ export function DownloadPage() {
                   <p>{target.description}</p>
                   {ready && target.links ? (
                     <div className="download-actions">
-                      {target.links.map((link) => <a key={link.href} className="button primary" href={link.href}>{link.label} <ExternalLink size={16} /></a>)}
+                      {target.links.map((link) => <a key={link.href} className="button primary" href={link.href}>{link.label} · 直接下载 <ExternalLink size={16} /></a>)}
                     </div>
                   ) : ready ? (
                     <a className="button primary" href={target.href} target={target.id === 'web' ? '_blank' : undefined} rel={target.id === 'web' ? 'noreferrer' : undefined}>{target.id === 'web' ? '立即打开' : '下载安装包'} <ExternalLink size={16} /></a>

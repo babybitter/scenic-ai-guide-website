@@ -45,8 +45,8 @@ export const downloadTargets: DownloadTarget[] = [
     format: 'AppImage / DEB',
     description: '便携 AppImage 与 Debian 安装包并行提供，适配景区终端设备。',
     links: [
-      { label: '下载 AppImage', href: `${downloadHost}/ShuzhiYouzong-0.1.0-linux-x86_64.AppImage` },
-      { label: '下载 DEB', href: `${downloadHost}/ShuzhiYouzong-0.1.0-linux-amd64.deb` },
+      { label: 'AppImage', href: `${downloadHost}/ShuzhiYouzong-0.1.0-linux-x86_64.AppImage` },
+      { label: 'DEB', href: `${downloadHost}/ShuzhiYouzong-0.1.0-linux-amd64.deb` },
     ],
     status: 'ready',
     badge: '评审测试包',
