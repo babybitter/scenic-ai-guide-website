@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import type { ReactNode } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, HandHeart } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Award, GraduationCap, HandHeart, Landmark, Mail, Users } from 'lucide-react'
 
 interface TocItem { id: string; label: string }
 
@@ -95,13 +95,58 @@ const pages: DocPage[] = [
     </>,
   },
   {
-    slug: 'thanks', title: '致谢', kicker: '贡献与授权待确认',
-    toc: [{ id: 'principle', label: '记录原则' }, { id: 'groups', label: '预留分组' }, { id: 'notice', label: '待补说明' }],
+    slug: 'thanks', title: '致谢', kicker: '感谢每一份同行与托举',
+    toc: [
+      { id: 'journey', label: '一路同行' }, { id: 'mentor-team', label: '指导与团队' },
+      { id: 'organizers', label: '赛事组织' }, { id: 'support', label: '答疑支持' },
+      { id: 'judges', label: '评委专家' }, { id: 'ecosystem', label: '技术生态' },
+      { id: 'closing', label: '写在最后' },
+    ],
     content: <>
-      <h1>致谢</h1><p className="lead">本页已为真实贡献者、指导与授权记录预留结构，正式名单待团队确认后补充。</p>
-      <h2 id="principle">记录原则</h2><p>依据真实贡献记录、数据来源、软件许可证和素材授权清单补充，不虚构姓名，不遗漏需要声明的第三方来源。</p>
-      <h2 id="groups">预留分组</h2><ul><li>项目团队成员与职责</li><li>指导教师与评审建议</li><li>中国软件杯及 A5 赛题相关单位</li><li>灵山胜境、拈花湾资料与数据来源</li><li>Vue、Node.js、Leaflet、Electron 等开源生态</li><li>讯飞、腾讯位置服务、Live2D 相关技术与许可证</li><li>图片、音频、模型、地图与全景素材授权说明</li></ul>
-      <h2 id="notice">待补说明</h2><div className="thanks-placeholder"><HandHeart size={42} /><h3>内容待团队确认</h3><p>正式发布需逐项核对贡献归属、开源许可证与素材再发布授权。</p></div>
+      <h1>致谢</h1><p className="lead">一项作品的最终交付，从来不是某一个人的独行。谨以此页，记录数智游踪从构想到落地过程中收到的每一份指引、坚守、耐心与信任。</p>
+      <div className="thanks-hero" id="journey">
+        <div className="thanks-hero-mark"><HandHeart size={30} /><span>ACKNOWLEDGEMENTS</span></div>
+        <p>回望从备赛到最终交付的整个历程，我们跨越了一个又一个难点，也在持续验证、推翻与重建中完成了宝贵的蜕变与成长。每一次突破的背后，都有同行者的托举。</p>
+      </div>
+
+      <h2 id="mentor-team">指导与团队</h2>
+      <div className="thanks-credit-grid">
+        <article className="thanks-credit-card">
+          <div className="thanks-credit-icon"><GraduationCap size={20} /></div>
+          <span>指导教师</span><h3>陈子淮老师</h3>
+          <p>由衷感谢陈子淮指导老师在全过程中的悉心指引与无私帮助。从选题方向的敲定、技术路线的梳理，到核心难点的攻克，每一步突破都离不开您的倾囊相授与耐心把关。</p>
+        </article>
+        <article className="thanks-credit-card">
+          <div className="thanks-credit-icon"><Users size={20} /></div>
+          <span>参赛团队</span><h3>张婧瑜 · 季祥 · 林骏毅</h3>
+          <p>感谢团队成员在无数个深夜并肩调试、反复迭代的坚守与付出。正是彼此间的信任、坦诚与默契协作，支撑我们把一个想法打磨成完整系统，并一路走到总决赛的舞台。</p>
+        </article>
+      </div>
+
+      <h2 id="organizers">赛事组织</h2>
+      <div className="thanks-organization">
+        <div className="thanks-organization-title"><Landmark size={20} /><b>致大赛主办、命题与组织单位</b></div>
+        <div className="thanks-organization-list"><span>工业和信息化部</span><span>教育部</span><span>江苏省人民政府</span><span>锐捷网络（苏州）有限公司</span><span>各承办单位</span><span>大赛组委会</span></div>
+      </div>
+      <p>我们向本届大赛的主办单位、出题企业、各承办单位与大赛组委会致以最诚挚的谢意。感谢赛事平台为全国青年学子搭建起连接产业需求、展现软件创新能力、碰撞技术思想的国家级专业舞台。从贴合产业前沿的赛题设置，到全流程规范有序的赛事组织，再到总决赛的周全保障，每一处环节的精心安排，都为我们的参赛实践与能力成长保驾护航。</p>
+
+      <h2 id="support">答疑支持</h2>
+      <p>特别感谢组委会老师在 QQ 群答疑期间给予的细心解答。一次次及时、明确的回应，帮助我们更准确地理解参赛要求，也让团队能够把更多精力投入作品本身。点击老师姓名或邮箱即可发起邮件联系。</p>
+      <div className="thanks-contact-grid">
+        <a className="thanks-contact-card" href="mailto:2219396984@qq.com" aria-label="发送邮件给王佳琳老师" title="发送邮件至 2219396984@qq.com"><div><strong>王佳琳老师</strong><span>组委会答疑</span></div><Mail size={18} /><small>2219396984@qq.com</small></a>
+        <a className="thanks-contact-card" href="mailto:568735108@qq.com" aria-label="发送邮件给王艳老师" title="发送邮件至 568735108@qq.com"><div><strong>王艳老师</strong><span>组委会答疑</span></div><Mail size={18} /><small>568735108@qq.com</small></a>
+        <a className="thanks-contact-card" href="mailto:3216299230@qq.com" aria-label="发送邮件给马溪若老师" title="发送邮件至 3216299230@qq.com"><div><strong>马溪若老师</strong><span>组委会答疑</span></div><Mail size={18} /><small>3216299230@qq.com</small></a>
+      </div>
+
+      <h2 id="judges">评委专家</h2>
+      <div className="thanks-inline-heading"><Award size={20} /><b>致每一位评委专家</b></div>
+      <p>感谢各位评委专家在百忙之中拨冗评审，耐心聆听我们的项目汇报。严谨的专业视角与中肯的点评建议，不仅帮助我们清晰认识到项目的不足与优化空间，也让我们对软件技术的产业落地价值有了更深刻的理解，为未来的技术实践与职业发展指明了方向。</p>
+
+      <h2 id="ecosystem">技术生态</h2>
+      <p>数智游踪的完成也离不开 Vue、Node.js、Leaflet、Electron 等开源社区，以及科大讯飞、腾讯位置服务与 Live2D 相关技术生态提供的能力基础。我们尊重每一项工具、框架与素材背后的创造性劳动，并将持续依据软件许可证、平台服务条款与素材授权要求规范使用和发布。</p>
+
+      <h2 id="closing">写在最后</h2>
+      <div className="thanks-closing"><HandHeart size={26} /><div><b>经历本身，就是答案。</b><p>无论最终成绩如何，这段全力以赴的经历已是我们大学生涯中最珍贵的财富。我们深信，在项目中淬炼出的系统工程思维与团队协作经验，必将在未来的学习和工作中持续发光发热。</p></div></div>
     </>,
   },
 ]
