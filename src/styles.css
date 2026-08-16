@@ -195,7 +195,8 @@ h1, h2, h3, p { margin-top: 0; }
 .access-card-downloads a { min-width: 0; padding: 10px 9px; border: 1px solid color-mix(in srgb, var(--teal) 28%, var(--line)); border-radius: 10px; justify-content: space-between; background: color-mix(in srgb, var(--teal) 6%, var(--paper)); transition: border-color .2s ease, background .2s ease, transform .2s ease; }
 .access-card-downloads a:hover { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 12%, var(--paper)); transform: translateY(-1px); }
 .access-card-downloads a span { overflow: hidden; text-overflow: ellipsis; }
-.access-card-downloads a small { color: var(--muted); font-size: 9px; font-weight: 600; }
+.access-card-download-action { display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.access-card-download-action small { color: var(--muted); font-size: 9px; font-weight: 600; }
 .status-ready, .status-soon { width: fit-content; display: inline-flex; align-items: center; gap: 5px; color: var(--teal-dark); font-size: 10px; font-weight: 700; }
 .status-soon { color: var(--gold); }
 .desktop-access-grid { display: grid; gap: 12px; }
