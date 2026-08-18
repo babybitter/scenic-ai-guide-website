@@ -115,13 +115,13 @@ https://www.shuzhiyouzong.cn/downloads/<文件名>
 
 | 平台 | 文件名 |
 | --- | --- |
-| Windows | `ShuzhiYouzong-0.1.0-win-x64.exe` |
-| Linux AppImage | `ShuzhiYouzong-0.1.0-linux-x86_64.AppImage` |
-| Linux DEB | `ShuzhiYouzong-0.1.0-linux-amd64.deb` |
-| macOS Apple Silicon | `ShuzhiYouzong-0.1.0-mac-arm64.dmg` |
-| macOS Intel | `ShuzhiYouzong-0.1.0-mac-x64.dmg` |
-| Android | `shuzhiyouzong-1.0.0-android.apk` |
-| HarmonyOS | `shuzhiyouzong-1.0.0-harmony.hap` |
+| Windows | `ShuzhiYouzong-0.2.0-win-x64.exe` |
+| Linux AppImage | `ShuzhiYouzong-0.2.0-linux-x86_64.AppImage` |
+| Linux DEB | `ShuzhiYouzong-0.2.0-linux-amd64.deb` |
+| macOS Apple Silicon | `ShuzhiYouzong-0.2.0-mac-arm64.dmg` |
+| macOS Intel | `ShuzhiYouzong-0.2.0-mac-x64.dmg` |
+| Android | `shuzhiyouzong-0.2.0-android.apk` |
+| HarmonyOS | `shuzhiyouzong-0.2.0-harmony.hap` |
 
 更新安装包时需要同时检查服务器文件名和 `src/data/downloads.ts` 的链接；如果只替换服务器文件而不更新数据文件，页面可能继续指向旧版本。Windows 和 macOS 评审包在完成商业签名、公证前，首次启动可能出现系统安全提示。
 

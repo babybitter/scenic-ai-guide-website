@@ -47,7 +47,7 @@ export function DownloadPage() {
           </div>
           <div className="download-note">
             <MonitorDown size={22} />
-            <div><b>当前通过自有服务器分发 · /downloads/ 提供公开下载目录</b><p>桌面端当前为 v0.1.0 评审测试包，Android 与 HarmonyOS 为 v1.0.0；Windows 与 macOS 包尚未进行商业代码签名/公证，首次打开时可能出现系统安全提示。SHA-256 校验清单与安装包位于同一下载目录。</p></div>
+            <div><b>当前通过自有服务器分发 · /downloads/ 提供公开下载目录</b><p>当前统一发布包版本为 v0.2.0；Android 与 HarmonyOS 应用内部版本保持为 1.0.2（102）。Windows 与 macOS 包尚未进行商业代码签名/公证，首次打开时可能出现系统安全提示。SHA-256 校验清单与安装包位于同一下载目录。</p></div>
           </div>
         </div>
       </section>
