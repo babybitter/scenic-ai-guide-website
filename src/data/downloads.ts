@@ -14,8 +14,9 @@ export interface DownloadTarget {
 
 export const webAppUrl = 'https://www.shuzhiyouzong.cn'
 export const downloadHost = 'https://www.shuzhiyouzong.cn/downloads'
-export const androidDownloadUrl = `${downloadHost}/shuzhiyouzong-0.2.0-android.apk`
-export const harmonyDownloadUrl = `${downloadHost}/shuzhiyouzong-0.2.0-harmony.hap`
+export const releaseVersion = '0.2.0'
+export const androidDownloadUrl = `${downloadHost}/shuzhiyouzong-${releaseVersion}-android.apk`
+export const harmonyDownloadUrl = `${downloadHost}/shuzhiyouzong-${releaseVersion}-harmony.hap`
 
 export const downloadTargets: DownloadTarget[] = [
   {
@@ -34,7 +35,7 @@ export const downloadTargets: DownloadTarget[] = [
     platform: 'Windows 10 / 11 · x64',
     format: 'EXE',
     description: '集成网页、Node.js 服务和本地知识库运行时的一体化安装包。',
-    href: `${downloadHost}/ShuzhiYouzong-0.2.0-win-x64.exe`,
+    href: `${downloadHost}/ShuzhiYouzong-${releaseVersion}-win-x64.exe`,
     status: 'ready',
     badge: '评审测试包',
   },
@@ -45,8 +46,8 @@ export const downloadTargets: DownloadTarget[] = [
     format: 'AppImage / DEB',
     description: '便携 AppImage 与 Debian 安装包并行提供，适配景区终端设备。',
     links: [
-      { label: 'AppImage', href: `${downloadHost}/ShuzhiYouzong-0.2.0-linux-x86_64.AppImage` },
-      { label: 'DEB', href: `${downloadHost}/ShuzhiYouzong-0.2.0-linux-amd64.deb` },
+      { label: 'AppImage', href: `${downloadHost}/ShuzhiYouzong-${releaseVersion}-linux-x86_64.AppImage` },
+      { label: 'DEB', href: `${downloadHost}/ShuzhiYouzong-${releaseVersion}-linux-amd64.deb` },
     ],
     status: 'ready',
     badge: '评审测试包',
@@ -58,8 +59,8 @@ export const downloadTargets: DownloadTarget[] = [
     format: 'DMG',
     description: '分别构建 x64 与 arm64 安装镜像，覆盖两代 Mac 平台。',
     links: [
-      { label: 'Apple Silicon', href: `${downloadHost}/ShuzhiYouzong-0.2.0-mac-arm64.dmg` },
-      { label: 'Intel', href: `${downloadHost}/ShuzhiYouzong-0.2.0-mac-x64.dmg` },
+      { label: 'Apple Silicon', href: `${downloadHost}/ShuzhiYouzong-${releaseVersion}-mac-arm64.dmg` },
+      { label: 'Intel', href: `${downloadHost}/ShuzhiYouzong-${releaseVersion}-mac-x64.dmg` },
     ],
     status: 'ready',
     badge: '评审测试包',
@@ -72,7 +73,7 @@ export const downloadTargets: DownloadTarget[] = [
     description: '面向游客随身使用的移动导览客户端，覆盖问答、地图、讲解与路线体验。',
     href: androidDownloadUrl,
     status: 'ready',
-    badge: 'Release v0.2.0',
+    badge: `Release v${releaseVersion}`,
   },
   {
     id: 'harmony',
@@ -82,12 +83,12 @@ export const downloadTargets: DownloadTarget[] = [
     description: '基于鸿蒙原生能力交付的游客端安装包，延续统一的景区导览服务流程。',
     href: harmonyDownloadUrl,
     status: 'ready',
-    badge: 'Release v0.2.0',
+    badge: `Release v${releaseVersion}`,
   },
 ]
 
 export const mobileTargets = [
-  { name: 'Android App', note: 'APK Release v0.2.0 已开放', status: 'ready', href: androidDownloadUrl },
-  { name: 'HarmonyOS', note: 'HAP Release v0.2.0 已开放', status: 'ready', href: harmonyDownloadUrl },
+  { name: 'Android App', note: `APK Release v${releaseVersion} 已开放`, status: 'ready', href: androidDownloadUrl },
+  { name: 'HarmonyOS', note: `HAP Release v${releaseVersion} 已开放`, status: 'ready', href: harmonyDownloadUrl },
   { name: '微信小程序', note: '入口保留 · 二维码待更新', status: 'soon' },
 ]
