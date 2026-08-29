@@ -99,7 +99,8 @@ const pages: DocPage[] = [
     toc: [
       { id: 'journey', label: '一路同行' }, { id: 'mentor-team', label: '指导与团队' },
       { id: 'organizers', label: '赛事组织' }, { id: 'support', label: '答疑支持' },
-      { id: 'judges', label: '评委专家' }, { id: 'ecosystem', label: '技术生态' },
+      { id: 'special-thanks', label: '特别感谢' }, { id: 'judges', label: '评委专家' },
+      { id: 'ecosystem', label: '技术生态' },
       { id: 'closing', label: '写在最后' },
     ],
     content: <>
@@ -121,6 +122,15 @@ const pages: DocPage[] = [
 
         <h2 id="support">答疑支持</h2>
         <p>特别感谢<strong>组委会老师</strong>在 QQ 群答疑期间给予的细心解答。一次次及时、明确的回应，帮助我们更准确地理解参赛要求，也让团队能够把更多精力投入作品本身。在此，特别感谢<a className="thanks-mail-link" href="mailto:2219396984@qq.com" aria-label="发送邮件给王佳琳老师">王佳琳老师</a>、<a className="thanks-mail-link" href="mailto:568735108@qq.com" aria-label="发送邮件给王艳老师">王艳老师</a>与<a className="thanks-mail-link" href="mailto:3216299230@qq.com" aria-label="发送邮件给马溪若老师">马溪若老师</a>的耐心帮助。</p>
+
+        <h2 id="special-thanks">特别感谢</h2>
+        <h3>张畅（@Miraitowa.）</h3>
+        <p>2026 年 8 月中旬，数智游踪顺利入围中国软件杯全国总决赛，团队随即开启多端构建与真机验证工作。首批构建覆盖 Windows、Linux 与 macOS 桌面端，其中 macOS 客户端的兼容性、安装流程和现场演示效果，都需要在真实的 Mac 设备上完成测试。</p>
+        <p>想到朋友张畅正好有一台 Mac，我便试着询问他，能否将电脑借给项目组测试一段时间。</p>
+        <blockquote className="thanks-quote">
+          <p>半个小时后，我在家楼下拿到了电脑。</p>
+        </blockquote>
+        <p>这一借，便是半个月。8 月底，数智游踪顺利获得全国二等奖；在总决赛的功能演示中，macOS 端的稳定呈现为完整展示项目的多端能力提供了重要支撑。那台及时借来的电脑，以及这份毫不犹豫的信任与支持，都成为项目顺利完成多端验证过程中不可或缺的一环。在此，向张畅致以由衷的感谢。</p>
 
         <h2 id="judges">评委专家</h2>
         <p>感谢各位<strong>评委专家</strong>在百忙之中拨冗评审，耐心聆听我们的项目汇报。严谨的专业视角与中肯的点评建议，不仅帮助我们清晰认识到项目的不足与优化空间，也让我们对软件技术的产业落地价值有了更深刻的理解，为未来的技术实践与职业发展指明了方向。</p>
