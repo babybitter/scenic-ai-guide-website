@@ -1,10 +1,27 @@
+/**
+ * @fileoverview 数智游踪游客反馈页面组件。
+ *
+ * @description
+ * 通过真实游览场景说明反馈方向，展示规划中的反馈表单结构，
+ * 并提供在线体验与路线图页面入口。
+ */
 import { ArrowRight, MapPin, MessageSquareText, SignalLow, SunMedium } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { SectionHeading } from '../components/SectionHeading'
 import { feedbackScenarios } from '../data/content'
 
+/**
+ * @description 按反馈场景顺序提供场景卡片使用的图标组件。
+ * @type {import('lucide-react').LucideIcon[]}
+ */
 const icons = [MapPin, SignalLow, SunMedium, MessageSquareText]
 
+/**
+ * @description 渲染面向普通游客的反馈场景、表单预览和体验入口。
+ * @returns {JSX.Element} 包含反馈说明与预览表单的 React 元素。
+ * @example
+ * <FeedbackPage />
+ */
 export function FeedbackPage() {
   return (
     <div className="subpage">

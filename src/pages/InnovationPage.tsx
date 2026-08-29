@@ -1,6 +1,17 @@
+/**
+ * @fileoverview 数智游踪项目创新点页面组件。
+ *
+ * @description
+ * 集中呈现多端交付、数字人兜底、地图兜底、知识问答与运营闭环等工程创新，
+ * 并明确每项能力当前可验证的实现边界。
+ */
 import { Activity, AudioLines, BookOpenCheck, Layers3, MapPinned, MessagesSquare, Network } from 'lucide-react'
 import { SectionHeading } from '../components/SectionHeading'
 
+/**
+ * @description 定义创新点页面展示的工程实践、说明文案及对应图标。
+ * @type {Array<{number: string, icon: import('lucide-react').LucideIcon, title: string, subtitle: string, body: string, note: string}>}
+ */
 const innovations = [
   {
     number: '01', icon: Layers3, title: '一套业务，覆盖多端', subtitle: 'FULL-STACK MULTI-PLATFORM DELIVERY',
@@ -39,6 +50,12 @@ const innovations = [
   },
 ]
 
+/**
+ * @description 渲染数智游踪七项工程创新及其实现边界说明。
+ * @returns {JSX.Element} 包含创新实践列表与总结的 React 元素。
+ * @example
+ * <InnovationPage />
+ */
 export function InnovationPage() {
   return (
     <div className="subpage innovation-page">

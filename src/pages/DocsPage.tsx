@@ -1,10 +1,32 @@
+/**
+ * @fileoverview 数智游踪项目文档页面及文档导航配置。
+ *
+ * @description
+ * 集中定义项目介绍、安装部署、使用指南、技术选型与致谢内容，
+ * 并根据当前文档路由生成侧栏目录、页内目录和前后篇导航。
+ */
 import { useEffect } from 'react'
 import type { ReactNode } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 
+/**
+ * @typedef {object} TocItem
+ * @description 文档页内目录中的单个锚点条目。
+ * @property {string} id 对应正文标题元素的锚点 ID。
+ * @property {string} label 显示在目录中的中文标题。
+ */
 interface TocItem { id: string; label: string }
 
+/**
+ * @typedef {object} DocPage
+ * @description 文档站中的单个页面配置。
+ * @property {string} slug 文档子路由片段；空字符串表示文档首页。
+ * @property {string} title 页面标题及导航名称。
+ * @property {string} kicker 页面主题的简短补充说明。
+ * @property {TocItem[]} toc 页面内可跳转的目录条目。
+ * @property {ReactNode} content 页面主体 React 内容。
+ */
 interface DocPage {
   slug: string
   title: string
@@ -13,6 +35,10 @@ interface DocPage {
   content: ReactNode
 }
 
+/**
+ * @description 按导航顺序保存全部文档页面及其正文内容。
+ * @type {DocPage[]}
+ */
 const pages: DocPage[] = [
   {
     slug: '', title: '项目介绍', kicker: '理解产品与赛题',
@@ -146,8 +172,21 @@ const pages: DocPage[] = [
   },
 ]
 
+/**
+ * @description 将文档页面标识转换为站内路由路径。
+ * @param {string} slug 文档子路由片段；空字符串表示文档首页。
+ * @returns {string} 可传给 React Router 的文档路径。
+ * @example
+ * pathFor('technology') // '/docs/technology'
+ */
 const pathFor = (slug: string) => slug ? `/docs/${slug}` : '/docs'
 
+/**
+ * @description 根据当前 URL 渲染文档正文、分组导航、页内目录和相邻页面入口。
+ * @returns {JSX.Element} 完整的数智游踪文档页面。
+ * @example
+ * <Route path="/docs/*" element={<DocsPage />} />
+ */
 export function DocsPage() {
   const location = useLocation()
   const slug = location.pathname.replace(/^\/docs\/?/, '').split('/')[0]

@@ -1,13 +1,35 @@
+/**
+ * @fileoverview 数智游踪官网的语言状态、公共文案与翻译访问接口。
+ *
+ * @description
+ * 提供简体中文、繁体中文和英文三种语言，负责恢复与持久化用户选择，
+ * 同时通过 React Context 向页面组件暴露当前语言和公共文案查询函数。
+ */
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 
+/**
+ * @typedef {'zh-CN'|'zh-TW'|'en'} Locale
+ * @description 官网支持的语言区域代码。
+ */
 export type Locale = 'zh-CN' | 'zh-TW' | 'en'
 
+/**
+ * @typedef {object} LanguageContextValue
+ * @description 语言上下文向后代组件提供的状态与操作。
+ * @property {Locale} locale 当前启用的语言区域代码。
+ * @property {(locale: Locale) => void} setLocale 更新当前语言的状态函数。
+ * @property {(key: TranslationKey) => string} t 根据公共文案键读取当前语言文本的函数。
+ */
 interface LanguageContextValue {
   locale: Locale
   setLocale: (locale: Locale) => void
   t: (key: TranslationKey) => string
 }
 
+/**
+ * @description 保存三种受支持语言共用的主页界面文案。
+ * @type {Readonly<Record<Locale, Record<string, string>>>}
+ */
 const commonCopy = {
   'zh-CN': {
     competition: '第十五届中国软件杯 · A5 赛题作品',
@@ -71,13 +93,32 @@ const commonCopy = {
   },
 } as const
 
+/**
+ * @typedef {keyof typeof commonCopy['zh-CN']} TranslationKey
+ * @description 公共文案对象中所有可查询键的联合类型。
+ */
 export type TranslationKey = keyof typeof commonCopy['zh-CN']
 
+/**
+ * @description 浏览器本地存储中记录语言选择所使用的键名。
+ * @type {string}
+ */
 const LANGUAGE_STORAGE_KEY = 'shuzhiyouzong-language'
 
+/**
+ * @description 保存并向组件树传递语言状态；Provider 外部的默认值为 `null`。
+ * @type {import('react').Context<LanguageContextValue | null>}
+ */
 // eslint-disable-next-line react-refresh/only-export-components
 export const LanguageContext = createContext<LanguageContextValue | null>(null)
 
+/**
+ * @description 读取当前组件所在语言 Provider 提供的上下文值。
+ * @returns {LanguageContextValue} 当前语言、更新函数与翻译查询函数。
+ * @throws {Error} 当前组件未被 `LanguageProvider` 包裹时抛出。
+ * @example
+ * const { locale, setLocale, t } = useLanguage()
+ */
 // eslint-disable-next-line react-refresh/only-export-components
 export function useLanguage() {
   const value = useContext(LanguageContext)
@@ -87,6 +128,12 @@ export function useLanguage() {
   return value
 }
 
+/**
+ * @description 从浏览器本地存储恢复受支持的语言，缺失、无效或不可访问时回退为简体中文。
+ * @returns {Locale} 可直接用于初始化语言状态的区域代码。
+ * @example
+ * const initialLocale = getStoredLocale()
+ */
 function getStoredLocale(): Locale {
   try {
     const stored = window.localStorage.getItem(LANGUAGE_STORAGE_KEY)
@@ -96,6 +143,14 @@ function getStoredLocale(): Locale {
   }
 }
 
+/**
+ * @description 管理官网语言状态，并同步 HTML 语言属性和浏览器本地存储。
+ * @param {Readonly<{children: ReactNode}>} props Provider 组件属性。
+ * @param {ReactNode} props.children 需要共享语言状态的后代内容。
+ * @returns {JSX.Element} 包含语言上下文值的 React Provider。
+ * @example
+ * <LanguageProvider><App /></LanguageProvider>
+ */
 export function LanguageProvider({ children }: Readonly<{ children: ReactNode }>) {
   const [locale, setLocale] = useState<Locale>(getStoredLocale)
 

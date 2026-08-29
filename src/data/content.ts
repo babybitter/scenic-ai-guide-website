@@ -1,3 +1,22 @@
+/**
+ * @fileoverview 数智游踪官网的产品展示、创新点、路线图与反馈场景数据。
+ *
+ * @description
+ * 以结构化静态数据集中维护首页和专题页面使用的中文内容，
+ * 并统一根据 Vite 部署基础路径生成产品截图资源地址。
+ */
+
+/**
+ * @typedef {object} FeatureSlide
+ * @description 首页产品能力轮播中的单个展示项。
+ * @property {string} id 用于轮播定位和 React 列表键的稳定标识。
+ * @property {string} eyebrow 展示在标题上方的能力分类短语。
+ * @property {string} title 产品能力标题。
+ * @property {string} description 产品能力的完整说明。
+ * @property {string} image 产品截图资源地址。
+ * @property {string} alt 产品截图的无障碍替代文本。
+ * @property {string[]} facts 与该能力关联的要点列表。
+ */
 export interface FeatureSlide {
   id: string
   eyebrow: string
@@ -8,8 +27,21 @@ export interface FeatureSlide {
   facts: string[]
 }
 
+/**
+ * @description 将 public 目录中的相对资源路径拼接为适配当前部署基础路径的地址。
+ * @param {string} path 相对于 public 目录的资源路径。
+ * @returns {string} 包含 Vite 基础路径的可访问资源地址。
+ * @example
+ * asset('screenshots/example.webp')
+ */
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
+/**
+ * @description 按轮播顺序定义首页展示的七项核心产品能力。
+ * @type {FeatureSlide[]}
+ * @example
+ * const firstSlide = featureSlides[0]
+ */
 export const featureSlides: FeatureSlide[] = [
   {
     id: 'digital-human',
@@ -76,6 +108,22 @@ export const featureSlides: FeatureSlide[] = [
   },
 ]
 
+/**
+ * @typedef {object} InnovationItem
+ * @description 项目创新点页面中的一项技术或交付能力。
+ * @property {string} number 用于视觉排序的两位编号。
+ * @property {string} title 创新点中文标题。
+ * @property {string} subtitle 创新点英文副标题。
+ * @property {string} body 创新方案、价值和边界的说明。
+ * @property {string[]} meta 与创新点关联的平台或能力标签。
+ */
+
+/**
+ * @description 定义官网项目创新点页面展示的核心方案。
+ * @type {InnovationItem[]}
+ * @example
+ * innovationItems.map((item) => item.title)
+ */
 export const innovationItems = [
   {
     number: '01',
@@ -107,6 +155,22 @@ export const innovationItems = [
   },
 ]
 
+/**
+ * @typedef {object} RoadmapStage
+ * @description 项目从最小可行版本到交付收敛的一个演进阶段。
+ * @property {string} phase 阶段名称。
+ * @property {string} title 阶段目标标题。
+ * @property {string} progress 该阶段完成的主要能力。
+ * @property {string} problem 该阶段遇到的技术或交付问题。
+ * @property {string} decision 针对问题作出的方案选择与决策。
+ */
+
+/**
+ * @description 按开发演进顺序定义项目路线图阶段及对应决策记录。
+ * @type {RoadmapStage[]}
+ * @example
+ * const latestStage = roadmapStages.at(-1)
+ */
 export const roadmapStages = [
   {
     phase: '初期',
@@ -131,6 +195,20 @@ export const roadmapStages = [
   },
 ]
 
+/**
+ * @typedef {object} FeedbackScenario
+ * @description 从景区访客视角描述的一项真实使用反馈场景。
+ * @property {string} title 场景问题的简短标题。
+ * @property {string} body 游客口吻的具体反馈内容。
+ * @property {string} tag 便于分类展示的反馈标签。
+ */
+
+/**
+ * @description 定义需求与建议页面使用的典型游客反馈场景。
+ * @type {FeedbackScenario[]}
+ * @example
+ * const accessibilityFeedback = feedbackScenarios.find((item) => item.tag === '无障碍')
+ */
 export const feedbackScenarios = [
   {
     title: '路线绕远或不好走',

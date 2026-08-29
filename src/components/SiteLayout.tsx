@@ -1,3 +1,9 @@
+/**
+ * @fileoverview 数智游踪介绍站的全局页面布局组件。
+ *
+ * @description
+ * 统一管理响应式页头、导航、语言与主题切换、滚动显隐行为、移动端菜单、页面出口及非文档页页脚。
+ */
 import { useEffect, useRef, useState } from 'react'
 import { Check, ChevronDown, Github, Languages, Moon, Sun } from 'lucide-react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
@@ -70,6 +76,14 @@ const layoutCopy = {
   },
 } as const
 
+/**
+ * @description 渲染全站公共布局，并协调导航、主题、语言、滚动页头和移动端菜单的交互状态。
+ * @returns {import('react').JSX.Element} 包含公共页头、当前子路由页面及条件页脚的站点外壳。
+ * @example
+ * <Route element={<SiteLayout />}>
+ *   <Route path="/" element={<HomePage />} />
+ * </Route>
+ */
 export function SiteLayout() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [languageOpen, setLanguageOpen] = useState(false)
@@ -96,6 +110,12 @@ export function SiteLayout() {
   }, [dark])
 
   useEffect(() => {
+    /**
+     * @description 将滚动状态更新合并到下一帧，并根据页面类型、菜单状态和滚动方向控制页头显隐。
+     * @returns {void} 不返回值。
+     * @example
+     * window.addEventListener('scroll', onScroll)
+     */
     const onScroll = () => {
       if (scrollFrame.current !== null) return
 
@@ -129,6 +149,13 @@ export function SiteLayout() {
   }, [isDocs, menuOpen])
 
   useEffect(() => {
+    /**
+     * @description 在用户按下 Escape 键时关闭移动端菜单与语言选择面板。
+     * @param {KeyboardEvent} event 浏览器键盘事件。
+     * @returns {void} 不返回值。
+     * @example
+     * window.addEventListener('keydown', onKeyDown)
+     */
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setMenuOpen(false)
@@ -136,6 +163,13 @@ export function SiteLayout() {
       }
     }
 
+    /**
+     * @description 当指针按下位置不在页头内部时关闭语言选择面板。
+     * @param {PointerEvent} event 浏览器原生指针按下事件。
+     * @returns {void} 不返回值。
+     * @example
+     * window.addEventListener('pointerdown', onPointerDown)
+     */
     const onPointerDown = (event: PointerEvent) => {
       if (!headerRef.current?.contains(event.target as Node)) {
         setLanguageOpen(false)
@@ -165,24 +199,49 @@ export function SiteLayout() {
     }
   }, [menuOpen])
 
+  /**
+   * @description 完成站内导航后关闭菜单与语言面板，并将页面滚动位置重置到顶部。
+   * @returns {void} 不返回值。
+   * @example
+   * onNavigation()
+   */
   const onNavigation = () => {
     setMenuOpen(false)
     setLanguageOpen(false)
     window.scrollTo({ top: 0, behavior: 'auto' })
   }
 
+  /**
+   * @description 切换移动端导航菜单，同时关闭语言面板并确保页头保持可见。
+   * @returns {void} 不返回值。
+   * @example
+   * toggleMenu()
+   */
   const toggleMenu = () => {
     setLanguageOpen(false)
     setHeaderHidden(false)
     setMenuOpen((value) => !value)
   }
 
+  /**
+   * @description 切换语言选择面板，同时关闭移动端菜单并确保页头保持可见。
+   * @returns {void} 不返回值。
+   * @example
+   * toggleLanguage()
+   */
   const toggleLanguage = () => {
     setMenuOpen(false)
     setHeaderHidden(false)
     setLanguageOpen((value) => !value)
   }
 
+  /**
+   * @description 应用指定站点语言，并在选择完成后关闭语言菜单。
+   * @param {Locale} nextLocale 用户选择的目标语言代码。
+   * @returns {void} 不返回值。
+   * @example
+   * selectLocale('zh-CN')
+   */
   const selectLocale = (nextLocale: Locale) => {
     setLocale(nextLocale)
     setLanguageOpen(false)

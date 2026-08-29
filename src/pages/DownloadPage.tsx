@@ -1,9 +1,26 @@
+/**
+ * @fileoverview 数智游踪多端下载页面组件。
+ *
+ * @description
+ * 展示网页端、桌面端与移动端的发布状态、安装包格式、官方下载链接，
+ * 并说明当前版本、校验文件及未签名安装包的使用提示。
+ */
 import { Apple, ArrowRight, Check, Clock3, ExternalLink, Globe2, Laptop, Layers3, MonitorDown, PackageOpen, Smartphone } from 'lucide-react'
 import { SectionHeading } from '../components/SectionHeading'
 import { downloadTargets, mobileTargets } from '../data/downloads'
 
+/**
+ * @description 按下载目标顺序提供各平台卡片使用的图标组件。
+ * @type {import('lucide-react').LucideIcon[]}
+ */
 const targetIcons = [Globe2, MonitorDown, PackageOpen, Apple, Smartphone, Layers3]
 
+/**
+ * @description 渲染数智游踪各平台的下载入口、发布状态和移动端规划。
+ * @returns {JSX.Element} 包含多端下载卡片与发布说明的 React 元素。
+ * @example
+ * <DownloadPage />
+ */
 export function DownloadPage() {
   return (
     <div className="subpage download-page">

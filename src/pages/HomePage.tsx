@@ -1,3 +1,10 @@
+/**
+ * @fileoverview 数智游踪官方网站主页组件。
+ *
+ * @description
+ * 组合首屏品牌展示、产品价值闭环、功能截图、技术创新、多端入口、路线图预览
+ * 与最终行动入口，并根据当前语言环境渲染部分国际化文案。
+ */
 import {
   ArrowRight,
   AudioLines,
@@ -26,6 +33,10 @@ import { useLanguage } from '../context/LanguageContext'
 import { innovationItems, roadmapStages } from '../data/content'
 import { downloadTargets, mobileTargets } from '../data/downloads'
 
+/**
+ * @description 定义主页服务闭环中依次展示的业务价值步骤。
+ * @type {Array<{icon: import('lucide-react').LucideIcon, title: string, body: string}>}
+ */
 const valueSteps = [
   { icon: MapPinned, title: '感知游客场景', body: '景点、位置、时间、兴趣与体力成为服务上下文。' },
   { icon: Database, title: '编排可信能力', body: 'RAG、语音、路线与数字人按需协同，答案保留来源。' },
@@ -33,9 +44,24 @@ const valueSteps = [
   { icon: CircleGauge, title: '沉淀运营洞察', body: '会话、反馈和关注热点反哺知识维护与景区决策。' },
 ]
 
+/**
+ * @description 按创新内容顺序提供主页创新卡片使用的图标组件。
+ * @type {import('lucide-react').LucideIcon[]}
+ */
 const innovationIcons = [Layers3, AudioLines, MapPinned, BookOpenCheck]
+
+/**
+ * @description 按下载目标顺序提供多端访问卡片使用的图标组件。
+ * @type {import('lucide-react').LucideIcon[]}
+ */
 const accessIcons = [Globe2, Laptop, TerminalSquare, Compass, Smartphone, Layers3]
 
+/**
+ * @description 渲染数智游踪官网主页及其完整产品介绍、创新与下载入口。
+ * @returns {JSX.Element} 包含主页全部展示区块的 React 元素。
+ * @example
+ * <HomePage />
+ */
 export function HomePage() {
   const { locale, t } = useLanguage()
   const isEnglish = locale === 'en'

@@ -1,14 +1,31 @@
+/**
+ * @fileoverview 数智游踪项目路线图页面组件。
+ *
+ * @description
+ * 按 MVP、架构重构与交付优化三个阶段梳理项目演进，并展示当前能力边界、
+ * 后续真机验收、正式发行、质量度量和运营闭环计划。
+ */
 import { ArrowRight, CheckCircle2, GitBranch, Lightbulb, TriangleAlert } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { SectionHeading } from '../components/SectionHeading'
 import { roadmapStages } from '../data/content'
 
+/**
+ * @description 按路线图阶段索引整理每个阶段已经完成的代表性工程事实。
+ * @type {string[][]}
+ */
 const stageFacts = [
   ['Vue / Node / SQLite 双端骨架', '多模态问答与来源引用', '讯飞数字人 + Live2D 预留', '路线推荐、反馈与运营模块', 'Windows 环境检查脚本'],
   ['地图组件域与讲解协调器', '灵山胜境 / 拈花湾双景区', '官方道路轨迹与手绘图块', 'Live2D MotionSync 口型', '知识去重与 PDF/XLSX 预览', '腾讯地图 + Leaflet'],
   ['Electron 三系统交付', 'Windows NSIS 安装包', 'Linux AppImage / DEB', 'macOS x64 / arm64 DMG', 'Android APK / HarmonyOS HAP', '包体、SQLite 与启动门禁', '不可变发布与原子回滚'],
 ]
 
+/**
+ * @description 渲染数智游踪开发阶段、当前能力边界与下一阶段里程碑。
+ * @returns {JSX.Element} 包含路线图时间线和后续规划的 React 元素。
+ * @example
+ * <RoadmapPage />
+ */
 export function RoadmapPage() {
   return (
     <div className="subpage">

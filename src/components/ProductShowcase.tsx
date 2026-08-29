@@ -1,6 +1,18 @@
+/**
+ * @fileoverview 数智游踪产品功能截图轮播组件。
+ *
+ * @description
+ * 以标签页、横向轮播和摘要信息展示产品功能，并支持自动轮播、手动切换和悬停暂停。
+ */
 import { useEffect, useMemo, useState } from 'react'
 import { featureSlides } from '../data/content'
 
+/**
+ * @description 渲染产品功能截图轮播，在允许动态效果时自动切换，并为鼠标和键盘交互提供暂停能力。
+ * @returns {import('react').JSX.Element} 包含功能标签、截图轨道和当前功能摘要的展示区域。
+ * @example
+ * <ProductShowcase />
+ */
 export function ProductShowcase() {
   const [active, setActive] = useState(0)
   const [paused, setPaused] = useState(false)
